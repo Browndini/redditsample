@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<% include ./header %>
+</head>
+
+<body class="container">
+	<h2>
+		Subreddit:
+		<%= data.children[0].data.subreddit %>
+	</h2>
+	<div class="container">
+		<% for(var i=0; i < data.children.length; i++) { %>
+			<div class="row">
+				<div class="col-sm-12" style="display: flex; justify-content: flex-start; margin: 10px 0;">
+					<%if (data.children[i].data.thumbnail_height!==null || data.children[i].data.thumbnail_width!==null){ %>
+						<img class="card-img-top" style="flex:1; margin: 5px;" src="<%= data.children[i].data.thumbnail %>" alt="Card image cap">
+						<% }else{ %>
+							<div style="flex: 1;background: #ababab"></div>
+							<% } %>
+								<div class="card-body" style="flex:4;">
+									<h5 class="card-title">
+										<%= data.children[i].data.title %>
+									</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<p>
+										<span style="color: #419C00; margin: 0 5px; ">
+											<%= data.children[i].data.ups %>
+												<img src="images/thumb-up.png" style="width: 15px; margin-top: -5px;">
+										</span>
+										<span>Submitted
+											<span>
+												<%= moment(data.children[i].data.created*1000).format('Do MMMM, YYYY')%>
+											</span> by
+											<span>
+												<%= data.children[i].data.author %>
+											</span>
+										</span>
+
+									</p>
+									<a href="<%= data.children[i].data.url %>" target='_blank' class="btn btn-primary">See Article</a>
+								</div>
+				</div>
+			</div>
+			<% } %>
+				<div class="row">
+					<div class="col-sm-12" style="display: flex; justify-content: flex-start; margin: 10px 0;">
+						<div class="col-sm-6" style="flex:1; text-align: center;">
+							<a href='/<%= search %>' style="background: burlywood; padding:10px 40px; border-radius: 5px;">Back</a>
+						</div>
+						<div class="col-sm-6" style="flex:1; text-align: center;">
+							<a href='/<%= search %>/<%= data.after %>' style="background: burlywood; padding:10px 40px; border-radius: 5px;">Next</a>
+						</div>
+					</div>
+
+				</div>
+	</div>
+</body>
+
+</html>
