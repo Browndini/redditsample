@@ -14,20 +14,19 @@
 		<% for(var i=0; i < data.children.length; i++) { %>
 			<div class="row">
 				<div class="col-sm-12" style="display: flex; justify-content: flex-start; margin: 10px 0;">
-					<%if (data.children[i].data.thumbnail_height!==null || data.children[i].data.thumbnail_width!==null){ %>
-						<img class="card-img-top" style="flex:1; margin: 5px;" src="<%= data.children[i].data.thumbnail %>" alt="Card image cap">
+					<%if (data.children[i].data.thumbnail.includes('.')){ %>
+						<img style="flex:1; margin: 5px;" src="<%= data.children[i].data.thumbnail %>" alt="<%= data.children[i].data.title %>">
 						<% }else{ %>
 							<div style="flex: 1;background: #ababab"></div>
 							<% } %>
 								<div class="card-body" style="flex:4;">
-									<h5 class="card-title">
+									<h5>
 										<%= data.children[i].data.title %>
 									</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 									<p>
 										<span style="color: #419C00; margin: 0 5px; ">
 											<%= data.children[i].data.ups %>
-												<img src="images/thumb-up.png" style="width: 15px; margin-top: -5px;">
+												<img src="/images/thumb-up.png" style="width: 15px; margin-top: -5px;">
 										</span>
 										<span>Submitted
 											<span>
